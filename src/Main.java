@@ -1,16 +1,15 @@
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 
-// 1. Abstract Class: Person
+// 1. Abstract Class
 abstract class Person {
-    private int personID;
-    private String name;
-    private int age;
-    private String gender;
-    private String phoneNumber;
-    private String address;
-
-    public Person() {
-    }
+    private final int personID;
+    private final String name;
+    private final int age;
+    private final String gender;
+    private final String phoneNumber;
+    private final String address;
 
     public Person(int personID, String name, int age, String gender, String phoneNumber, String address) {
         this.personID = personID;
@@ -21,80 +20,32 @@ abstract class Person {
         this.address = address;
     }
 
-    public int getPersonID() {
-        return personID;
-    }
+    public int getPersonID() { return personID; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public String getGender() { return gender; }
+    public String getPhoneNumber() { return phoneNumber; }
+    public String getAddress() { return address; }
 
-    public void setPersonID(int personID) {
-        this.personID = personID;
-    }
+    public abstract String performRole();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        if (age > 0) {
-            this.age = age;
-        } else {
-            System.out.println("Invalid age.");
-        }
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public abstract void performRole();
-
-    public void displayPersonDetails() {
-        System.out.println("Person ID: " + personID);
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("Gender: " + gender);
-        System.out.println("Phone Number: " + phoneNumber);
-        System.out.println("Address: " + address);
+    public String displayPersonDetails() {
+        return "Person ID: " + personID +
+                "\nName: " + name +
+                "\nAge: " + age +
+                "\nGender: " + gender +
+                "\nPhone Number: " + phoneNumber +
+                "\nAddress: " + address;
     }
 }
 
 // 2. Patient Class
 class Patient extends Person {
-    private String patientId;
-    private String bloodGroup;
-    private String disease;
-    private String medicalHistory;
-    private String admissionDate;
-
-    public Patient() {
-    }
+    private final String patientId;
+    private final String bloodGroup;
+    private final String disease;
+    private final String medicalHistory;
+    private final String admissionDate;
 
     public Patient(int personID, String name, int age, String gender, String phoneNumber, String address,
                    String patientId, String bloodGroup, String disease, String medicalHistory, String admissionDate) {
@@ -106,71 +57,34 @@ class Patient extends Person {
         this.admissionDate = admissionDate;
     }
 
-    public String getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
-    }
-
-    public String getDisease() {
-        return disease;
-    }
-
-    public void setDisease(String disease) {
-        this.disease = disease;
-    }
-
-    public String getMedicalHistory() {
-        return medicalHistory;
-    }
-
-    public void setMedicalHistory(String medicalHistory) {
-        this.medicalHistory = medicalHistory;
-    }
-
-    public String getAdmissionDate() {
-        return admissionDate;
-    }
-
-    public void setAdmissionDate(String admissionDate) {
-        this.admissionDate = admissionDate;
-    }
+    public String getPatientId() { return patientId; }
+    public String getBloodGroup() { return bloodGroup; }
+    public String getDisease() { return disease; }
+    public String getMedicalHistory() { return medicalHistory; }
+    public String getAdmissionDate() { return admissionDate; }
 
     @Override
-    public void performRole() {
-        System.out.println("Patient role: Receives treatment and keeps medical records in the hospital system.");
+    public String performRole() {
+        return "Patient role: Receives treatment and keeps medical records.";
     }
 
-    public void displayPatientDetails() {
-        displayPersonDetails();
-        System.out.println("Patient ID: " + patientId);
-        System.out.println("Blood Group: " + bloodGroup);
-        System.out.println("Disease: " + disease);
-        System.out.println("Medical History: " + medicalHistory);
-        System.out.println("Admission Date: " + admissionDate);
+    public String displayPatientDetails() {
+        return displayPersonDetails() +
+                "\nPatient ID: " + patientId +
+                "\nBlood Group: " + bloodGroup +
+                "\nDisease: " + disease +
+                "\nMedical History: " + medicalHistory +
+                "\nAdmission Date: " + admissionDate;
     }
 }
 
 // 3. Doctor Class
 class Doctor extends Person {
-    private String doctorId;
-    private String specialization;
-    private String qualification;
-    private String experience;
-    private int consultationFee;
-
-    public Doctor() {
-    }
+    private final String doctorId;
+    private final String specialization;
+    private final String qualification;
+    private final String experience;
+    private final int consultationFee;
 
     public Doctor(int personID, String name, int age, String gender, String phoneNumber, String address,
                   String doctorId, String specialization, String qualification, String experience, int consultationFee) {
@@ -182,72 +96,35 @@ class Doctor extends Person {
         this.consultationFee = consultationFee;
     }
 
-    public String getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
-    }
-
-    public String getQualification() {
-        return qualification;
-    }
-
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
-    }
-
-    public String getExperience() {
-        return experience;
-    }
-
-    public void setExperience(String experience) {
-        this.experience = experience;
-    }
-
-    public int getConsultationFee() {
-        return consultationFee;
-    }
-
-    public void setConsultationFee(int consultationFee) {
-        this.consultationFee = consultationFee;
-    }
+    public String getDoctorId() { return doctorId; }
+    public String getSpecialization() { return specialization; }
+    public String getQualification() { return qualification; }
+    public String getExperience() { return experience; }
+    public int getConsultationFee() { return consultationFee; }
 
     @Override
-    public void performRole() {
-        System.out.println("Doctor role: Checks patients, gives consultation, and manages treatment.");
+    public String performRole() {
+        return "Doctor role: Checks patients, gives consultation, and manages treatment.";
     }
 
-    public void displayDoctorDetails() {
-        displayPersonDetails();
-        System.out.println("Doctor ID: " + doctorId);
-        System.out.println("Specialization: " + specialization);
-        System.out.println("Qualification: " + qualification);
-        System.out.println("Experience: " + experience);
-        System.out.println("Consultation Fee: " + consultationFee);
+    public String displayDoctorDetails() {
+        return displayPersonDetails() +
+                "\nDoctor ID: " + doctorId +
+                "\nSpecialization: " + specialization +
+                "\nQualification: " + qualification +
+                "\nExperience: " + experience +
+                "\nConsultation Fee: " + consultationFee;
     }
 }
 
-// 4. Appointment Class - Composition
+// 4. Appointment Class
 class Appointment {
-    private int appointmentId;
-    private String appointmentDate;
-    private String appointmentTime;
-    private boolean status;
-    private Patient patient;
-    private Doctor doctor;
-
-    public Appointment() {
-    }
+    private final int appointmentId;
+    private final String appointmentDate;
+    private final String appointmentTime;
+    private final boolean status;
+    private final Patient patient;
+    private final Doctor doctor;
 
     public Appointment(int appointmentId, String appointmentDate, String appointmentTime,
                        boolean status, Patient patient, Doctor doctor) {
@@ -259,101 +136,57 @@ class Appointment {
         this.doctor = doctor;
     }
 
-    public int getAppointmentId() {
-        return appointmentId;
-    }
+    public int getAppointmentId() { return appointmentId; }
+    public String getAppointmentDate() { return appointmentDate; }
+    public String getAppointmentTime() { return appointmentTime; }
 
-    public void setAppointmentId(int appointmentId) {
-        this.appointmentId = appointmentId;
-    }
-
-    public String getAppointmentDate() {
-        return appointmentDate;
-    }
-
-    public void setAppointmentDate(String appointmentDate) {
-        this.appointmentDate = appointmentDate;
-    }
-
-    public String getAppointmentTime() {
-        return appointmentTime;
-    }
-
-    public void setAppointmentTime(String appointmentTime) {
-        this.appointmentTime = appointmentTime;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void displayAppointmentDetails() {
-        System.out.println("Appointment ID: " + appointmentId);
-        System.out.println("Appointment Date: " + appointmentDate);
-        System.out.println("Appointment Time: " + appointmentTime);
-        System.out.println("Status: " + (status ? "Confirmed" : "Pending"));
-        System.out.println("Patient Name: " + patient.getName());
-        System.out.println("Doctor Name: " + doctor.getName());
-        System.out.println("Doctor Specialization: " + doctor.getSpecialization());
+    public String displayAppointmentDetails() {
+        return "Appointment ID: " + appointmentId +
+                "\nAppointment Date: " + appointmentDate +
+                "\nAppointment Time: " + appointmentTime +
+                "\nStatus: " + (status ? "Confirmed" : "Pending") +
+                "\nPatient Name: " + patient.getName() +
+                "\nDoctor Name: " + doctor.getName() +
+                "\nDoctor Specialization: " + doctor.getSpecialization();
     }
 }
 
 // 5. Payment Interface
 interface Payment {
-    void processPayment();
-    void generateReceipt();
+    String processPayment();
+    String generateReceipt();
 }
 
-// 6. Card Payment Class
+// 6. Card Payment
 class CardPayment implements Payment {
-    @Override
-    public void processPayment() {
-        System.out.println("Processing card payment.");
-        System.out.println("Card details validated successfully.");
+    public String processPayment() {
+        return "Processing card payment...\nCard details validated successfully.";
     }
 
-    @Override
-    public void generateReceipt() {
-        System.out.println("Digital receipt generated successfully.");
+    public String generateReceipt() {
+        return "Digital receipt generated successfully.";
     }
 }
 
-// 7. Cash Payment Class
+// 7. Cash Payment
 class CashPayment implements Payment {
-    @Override
-    public void processPayment() {
-        System.out.println("Processing cash payment.");
+    public String processPayment() {
+        return "Processing cash payment...";
     }
 
-    @Override
-    public void generateReceipt() {
-        System.out.println("Cash payment receipt generated successfully.");
+    public String generateReceipt() {
+        return "Cash payment receipt generated successfully.";
     }
 }
 
-// 8. Bill Class - Composition with Payment
+// 8. Bill Class
 class Bill {
-    private int billId;
-    private int consultationCharge;
-    private int laboratoryCharge;
-    private int medicalCharge;
-    private int totalAmount;
-    private Payment payment;
-
-    public Bill() {
-    }
+    private final int billId;
+    private final int consultationCharge;
+    private final int laboratoryCharge;
+    private final int medicalCharge;
+    private final int totalAmount;
+    private final Payment payment;
 
     public Bill(int billId, int consultationCharge, int laboratoryCharge, int medicalCharge, Payment payment) {
         this.billId = billId;
@@ -364,38 +197,29 @@ class Bill {
         this.totalAmount = calculateBill();
     }
 
-    public int getBillId() {
-        return billId;
-    }
-
-    public int getTotalAmount() {
-        return totalAmount;
-    }
+    public int getBillId() { return billId; }
+    public int getTotalAmount() { return totalAmount; }
 
     public int calculateBill() {
         return consultationCharge + laboratoryCharge + medicalCharge;
     }
 
-    public void payBill() {
-        payment.processPayment();
-        payment.generateReceipt();
+    public String payBill() {
+        return payment.processPayment() + "\n" + payment.generateReceipt();
     }
 
-    public void displayBillDetails() {
-        System.out.println("Bill ID: " + billId);
-        System.out.println("Consultation Charge: " + consultationCharge);
-        System.out.println("Laboratory Charge: " + laboratoryCharge);
-        System.out.println("Medical Charge: " + medicalCharge);
-        System.out.println("Total Amount: " + totalAmount);
+    public String displayBillDetails() {
+        return "Bill ID: " + billId +
+                "\nConsultation Charge: " + consultationCharge +
+                "\nLaboratory Charge: " + laboratoryCharge +
+                "\nMedical Charge: " + medicalCharge +
+                "\nTotal Amount: " + totalAmount;
     }
 }
 
-// 9. File Handling Class
+// 9. File Manager
 class FileManager {
-    private String fileName;
-
-    public FileManager() {
-    }
+    private final String fileName;
 
     public FileManager(String fileName) {
         this.fileName = fileName;
@@ -405,34 +229,96 @@ class FileManager {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName, true))) {
             bw.write(data);
             bw.newLine();
-            System.out.println("Data saved successfully.");
         } catch (IOException e) {
-            System.out.println("Error saving data: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error saving data: " + e.getMessage());
         }
     }
 
-    public void readData() {
+    public String readData() {
+        StringBuilder records = new StringBuilder();
+
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            System.out.println("\n======== Saved Hospital Records ========");
 
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
+                records.append(line).append("\n");
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File not found. Please save data first.");
+            return "File not found. Please save data first.";
         } catch (IOException e) {
-            System.out.println("Error reading data: " + e.getMessage());
+            return "Error reading data: " + e.getMessage();
         }
+
+        return records.toString();
     }
 }
 
-// 10. Main Class
-public class Main {
-    public static void main(String[] args) {
+// 10. GUI Main Class
+public class Main extends JFrame {
 
-        Patient patient = new Patient(
+    private final JTextArea outputArea;
+
+    private Patient patient;
+    private Doctor doctor;
+    private Appointment appointment;
+    private Bill bill;
+
+    private final FileManager fileManager = new FileManager("MediCareRecords.txt");
+
+    public Main() {
+        setTitle("MediCare Management System");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        JLabel title = new JLabel("MediCare Management System", JLabel.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 26));
+        title.setForeground(new Color(0, 102, 153));
+
+        JButton btnPatient = new JButton("Register Patient");
+        JButton btnDoctor = new JButton("Add Doctor");
+        JButton btnAppointment = new JButton("Schedule Appointment");
+        JButton btnBill = new JButton("Generate Bill");
+        JButton btnPayment = new JButton("Process Payment");
+        JButton btnSave = new JButton("Save Records");
+        JButton btnView = new JButton("View Records");
+        JButton btnClear = new JButton("Clear");
+
+        JPanel buttonPanel = new JPanel(new GridLayout(4, 2, 10, 10));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        buttonPanel.add(btnPatient);
+        buttonPanel.add(btnDoctor);
+        buttonPanel.add(btnAppointment);
+        buttonPanel.add(btnBill);
+        buttonPanel.add(btnPayment);
+        buttonPanel.add(btnSave);
+        buttonPanel.add(btnView);
+        buttonPanel.add(btnClear);
+
+        outputArea = new JTextArea();
+        outputArea.setFont(new Font("Consolas", Font.PLAIN, 14));
+        outputArea.setEditable(false);
+
+        JScrollPane scrollPane = new JScrollPane(outputArea);
+
+        add(title, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.WEST);
+        add(scrollPane, BorderLayout.CENTER);
+
+        btnPatient.addActionListener(e -> registerPatient());
+        btnDoctor.addActionListener(e -> addDoctor());
+        btnAppointment.addActionListener(e -> scheduleAppointment());
+        btnBill.addActionListener(e -> generateBill());
+        btnPayment.addActionListener(e -> processPayment());
+        btnSave.addActionListener(e -> saveRecords());
+        btnView.addActionListener(e -> viewRecords());
+        btnClear.addActionListener(e -> outputArea.setText(""));
+    }
+
+    private void registerPatient() {
+        patient = new Patient(
                 101,
                 "Hafsa",
                 25,
@@ -446,7 +332,13 @@ public class Main {
                 "11/07/2026"
         );
 
-        Doctor doctor = new Doctor(
+        outputArea.setText("========== PATIENT REGISTERED SUCCESSFULLY ==========\n");
+        outputArea.append(patient.displayPatientDetails());
+        outputArea.append("\n\n" + patient.performRole());
+    }
+
+    private void addDoctor() {
+        doctor = new Doctor(
                 102,
                 "Dr Ahmed Abdullah",
                 30,
@@ -460,20 +352,18 @@ public class Main {
                 4500
         );
 
-        System.out.println("========== Patient Registered Successfully ==========");
-        patient.displayPatientDetails();
+        outputArea.setText("========== DOCTOR ADDED SUCCESSFULLY ==========\n");
+        outputArea.append(doctor.displayDoctorDetails());
+        outputArea.append("\n\n" + doctor.performRole());
+    }
 
-        System.out.println("\n========== Doctor Details ==========");
-        doctor.displayDoctorDetails();
+    private void scheduleAppointment() {
+        if (patient == null || doctor == null) {
+            JOptionPane.showMessageDialog(this, "Please register patient and add doctor first.");
+            return;
+        }
 
-        System.out.println("\n========== Runtime Polymorphism ==========");
-        Person person1 = patient;
-        Person person2 = doctor;
-
-        person1.performRole();
-        person2.performRole();
-
-        Appointment appointment = new Appointment(
+        appointment = new Appointment(
                 1001,
                 "11/07/2026",
                 "11:30 PM",
@@ -482,12 +372,14 @@ public class Main {
                 doctor
         );
 
-        System.out.println("\n========== Appointment Scheduled Successfully ==========");
-        appointment.displayAppointmentDetails();
+        outputArea.setText("========== APPOINTMENT SCHEDULED SUCCESSFULLY ==========\n");
+        outputArea.append(appointment.displayAppointmentDetails());
+    }
 
+    private void generateBill() {
         Payment payment = new CardPayment();
 
-        Bill bill = new Bill(
+        bill = new Bill(
                 102,
                 2000,
                 1500,
@@ -495,41 +387,65 @@ public class Main {
                 payment
         );
 
-        System.out.println("\n========== Bill Details ==========");
-        bill.displayBillDetails();
+        outputArea.setText("========== BILL GENERATED SUCCESSFULLY ==========\n");
+        outputArea.append(bill.displayBillDetails());
+    }
 
-        System.out.println("\n========== Payment Process ==========");
-        bill.payBill();
-        FileManager fileManager = new FileManager("MediCareRecords.txt");
+    private void processPayment() {
+        if (bill == null) {
+            JOptionPane.showMessageDialog(this, "Please generate bill first.");
+            return;
+        }
 
-        fileManager.saveData(
-                "========== PATIENT RECORD ==========\n" +
+        outputArea.setText("========== PAYMENT PROCESS ==========\n");
+        outputArea.append(bill.payBill());
+    }
+
+    private void saveRecords() {
+        if (patient == null || doctor == null || appointment == null || bill == null) {
+            JOptionPane.showMessageDialog(this, "Please complete all steps before saving records.");
+            return;
+        }
+
+        String records =
+                "\n========== PATIENT RECORD ==========\n" +
                         "Patient ID: " + patient.getPatientId() + "\n" +
                         "Patient Name: " + patient.getName() + "\n" +
                         "Disease: " + patient.getDisease() + "\n" +
-                        "Blood Group: " + patient.getBloodGroup() + "\n"
-        );
-        fileManager.saveData(
-                "========== DOCTOR RECORD ==========\n" +
+                        "Blood Group: " + patient.getBloodGroup() + "\n" +
+
+                        "\n========== DOCTOR RECORD ==========\n" +
                         "Doctor ID: " + doctor.getDoctorId() + "\n" +
                         "Doctor Name: " + doctor.getName() + "\n" +
-                        "Specialization: " + doctor.getSpecialization() + "\n"
-        );
-        fileManager.saveData(
-                "========== APPOINTMENT RECORD ==========\n" +
+                        "Specialization: " + doctor.getSpecialization() + "\n" +
+
+                        "\n========== APPOINTMENT RECORD ==========\n" +
                         "Appointment ID: " + appointment.getAppointmentId() + "\n" +
                         "Appointment Date: " + appointment.getAppointmentDate() + "\n" +
-                        "Appointment Time: " + appointment.getAppointmentTime() + "\n"
-        );
-        fileManager.saveData(
-                "========== BILL RECORD ==========\n" +
+                        "Appointment Time: " + appointment.getAppointmentTime() + "\n" +
+
+                        "\n========== BILL RECORD ==========\n" +
                         "Bill ID: " + bill.getBillId() + "\n" +
-                        "Total Amount: " + bill.getTotalAmount() + "\n"
-        );
-        fileManager.saveData(
-                "========== PAYMENT RECORD ==========\n" +
-                        "Payment Method: Card Payment\n"
-        );
-        fileManager.readData();
+                        "Total Amount: " + bill.getTotalAmount() + "\n" +
+
+                        "\n========== PAYMENT RECORD ==========\n" +
+                        "Payment Method: Card Payment\n" +
+                        "=====================================\n";
+
+        fileManager.saveData(records);
+
+        JOptionPane.showMessageDialog(this, "Records saved successfully.");
+        outputArea.setText(records);
+    }
+
+    private void viewRecords() {
+        outputArea.setText("========== SAVED HOSPITAL RECORDS ==========\n\n");
+        outputArea.append(fileManager.readData());
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new Main().setVisible(true);
+        });
     }
 }
